@@ -1,4 +1,4 @@
-.TH man 1 "28 Nov 2019" "0.32" "our own simple_shell man page"
+.TH man 1 "12 Feb 2023" "0.32" "our own simple_shell man page"
 .SH NAME
 .B our own simple_shell
 - We try to build our own simple shell.
