@@ -137,11 +137,34 @@ int main(int argc, char *argv[])
            }
           continue;
          }
+         if (strcmp(token0,"mkdir") == 0)
+         {
+           pid_t pid3 = fork();
+           
+           if (pid3 == 0)
+            {
+           char *e[100] = {"/bin/mkdir",token1,NULL};
+           execve (e[0],e,NULL);
+           perror ("mkdir");
+             exit (1);
+             }
+           else
+             wait (pid3);
+           continue;
+         }
          if (strcmp(token0,"ls") == 0)
          {
+           pid_t pid2 = fork();
+           
+           if (pid2 == 0)
+            {
            char *n[100] = {"/bin/ls",token1,NULL};
            execve (n[0],n,environ);
            perror ("ls");
+             exit (1);
+             }
+           else
+             wait (pid2);
            continue;
          }
         {
