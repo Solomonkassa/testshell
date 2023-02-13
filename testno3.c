@@ -78,10 +78,9 @@ int main(int argc, char *argv[])
 {
     char *token;
     char *why;
-    char *token1;
-    char *token0;
-    char *s;
-    size_t d = 20;
+    char *token1 = NULL;
+    char *token0 = NULL;
+    char *s = malloc (20*sizeof(char));
     int i = 0;
 
     while (1)
@@ -117,9 +116,7 @@ int main(int argc, char *argv[])
             i++;
             token = _strtok(NULL, " ");
         }
-       //  printf("%s \n",token0);
   
-        
         if (strcmp(token0, "cd") == 0)
         {
             chdir(token1);
@@ -127,9 +124,16 @@ int main(int argc, char *argv[])
         }
         if (strcmp(token0,"pwd") == 0)
         {
-          printf("%s\n",getcwd(s,d));
+           if (getcwd(s, 20 * sizeof(char)) != NULL)
+           {
+           printf("Current working directory: %s\n", s);
+           }
+           else
+           {
+           perror("getcwd() error");
+           }
           continue;
-        }
+         }
         
         {
             pid_t pid = fork();
