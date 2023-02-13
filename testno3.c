@@ -124,9 +124,9 @@ int main(int argc, char *argv[])
         }
         if (strcmp(token0,"pwd") == 0)
         {
-           if (getcwd(s, 20 * sizeof(char)) != NULL)
+           if (getcwd(s, 80 * sizeof(char)) != NULL)
            {
-           printf("Current working directory: %s\n", s);
+           printf("%s\n", s);
            }
            else
            {
