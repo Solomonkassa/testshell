@@ -73,7 +73,6 @@ char *_getline()
     buffer[i] = '\0';
     return buffer;
 }
-
 int main(int argc, char *argv[])
 {
     char *token;
@@ -115,13 +114,40 @@ int main(int argc, char *argv[])
             }
             i++;
             token = _strtok(NULL, " ");
-        }
-      
+        } 
+         if (strcmp(token0,"rm") == 0)
+         {
+           pid_t pid4 = fork();
+           
+           if (pid4 == 0)
+            {
+           char *f[100] = {"/bin/rmdir",token1,NULL};
+           execve (f[0],f,NULL);
+           perror ("rm");
+             exit (1);
+             }
+           else
+             wait (pid4);
+           continue;
+         }
   
-        
+     char *cg = getcwd(s, 80 * sizeof(char)) ;
+      
+         
         if (strcmp(token0, "cd") == 0)
         {
-            chdir(token1);
+     
+
+             chdir(token1);
+            if (token1 == NULL)
+            {
+             chdir("/home");
+            }
+            if (strcmp(token1, "-") == 0)
+            {
+              chdir(s);
+            }
+       
             continue;
         }
         if (strcmp(token0,"pwd") == 0)
