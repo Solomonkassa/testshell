@@ -3,7 +3,7 @@ int main(int argc, char *argv[])
   char *cmd = NULL;
   int i = 0, j = 0;
   size_t size = 0;
-  char *arr[80];
+  char *arr[80];//you can use dynamically allocate in heap
   
   char *token;
   
